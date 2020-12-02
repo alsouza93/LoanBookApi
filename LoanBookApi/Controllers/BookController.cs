@@ -11,6 +11,10 @@ namespace LoanBook.Api.Controllers
     [ApiController]
     public class BookController : ControllerBase
     {
+        public BookController()
+        {
+                
+        }
         
         [HttpGet]
         public IEnumerable<string> Get()
