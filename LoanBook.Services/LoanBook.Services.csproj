@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LoanBook.Domains\LoanBook.Domains.csproj" />
+    <ProjectReference Include="..\LoanBook.Persistence.Api\LoanBook.Persistence.Api.csproj" />
+    <ProjectReference Include="..\LoanBook.Services.Api\LoanBook.Services.Api.csproj" />
+  </ItemGroup>
+
+</Project>

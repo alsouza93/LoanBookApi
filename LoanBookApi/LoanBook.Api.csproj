@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LoanBook.Domains\LoanBook.Domains.csproj" />
+    <ProjectReference Include="..\LoanBook.Persistence.Api\LoanBook.Persistence.Api.csproj" />
+    <ProjectReference Include="..\LoanBook.Persistence\LoanBook.Persistence.csproj" />
+    <ProjectReference Include="..\LoanBook.Services.Api\LoanBook.Services.Api.csproj" />
+    <ProjectReference Include="..\LoanBook.Services\LoanBook.Services.csproj" />
+  </ItemGroup>
+
+
+</Project>
