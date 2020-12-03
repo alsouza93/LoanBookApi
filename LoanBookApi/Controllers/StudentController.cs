@@ -18,6 +18,9 @@ namespace LoanBook.Api.Controllers
             this.studentService = studentService;
         }
 
-
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+        }
     }
 }
