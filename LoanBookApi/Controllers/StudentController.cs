@@ -22,5 +22,12 @@ namespace LoanBook.Api.Controllers
         public void Delete(int id)
         {
         }
+
+        [HttpGet("{id}")]
+        public string Get(int id)
+        {
+            return "value";
+        }
+
     }
 }
