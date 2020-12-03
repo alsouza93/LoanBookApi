@@ -23,16 +23,17 @@ namespace LoanBook.Api.Controllers
         {
         }
 
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+       
 
         [HttpPost]
         public void Post([FromBody] string value)
         {
         }
 
+        [HttpGet("{id}")]
+        public string Get(int idStudent)
+        {
+            return "value";
+        }
     }
 }
