@@ -18,19 +18,23 @@ namespace LoanBook.Api.Controllers
             this.studentService = studentService;
         }
 
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+       
 
         [HttpGet("{id}")]
-        public string Get(int id)
+        public string Get(int idAtor)
         {
+            //studentService.
             return "value";
         }
+        //Teste de conflito
 
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] string valueTeste)
+        {
+        }
+
+        [HttpDelete("{id}")]
+        public void Delete(int idAtor)
         {
         }
 
