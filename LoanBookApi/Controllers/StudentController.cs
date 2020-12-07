@@ -18,15 +18,12 @@ namespace LoanBook.Api.Controllers
             this.studentService = studentService;
         }
 
-       
-
         [HttpGet("{id}")]
         public string Get(int idAtor)
         {
             //studentService.
             return "value";
         }
-        //Teste de conflito
 
         [HttpPost]
         public void Post([FromBody] string valueTeste)
@@ -38,5 +35,10 @@ namespace LoanBook.Api.Controllers
         {
         }
 
+        [HttpGet("{id}")]
+        public string Get(int idStudent)
+        {
+            return "value";
+        }
     }
 }
