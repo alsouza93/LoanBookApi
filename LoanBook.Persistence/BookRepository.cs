@@ -2,7 +2,7 @@
 
 namespace LoanBook.Persistence
 {
-    public class Class1
+    public class BookRepository
     {
     }
 }
