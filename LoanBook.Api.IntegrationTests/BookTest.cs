@@ -3,7 +3,7 @@ using Xunit;
 
 namespace LoanBook.Api.IntegrationTests
 {
-    public class UnitTest1
+    public class BookTest
     {
         [Fact]
         public void Test1()
