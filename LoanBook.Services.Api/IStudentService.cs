@@ -1,13 +1,15 @@
 ﻿using LoanBook.Domains;
 using System;
+using System.Collections.Generic;
 
 namespace LoanBook.Services.Api
 {
     public interface IStudentService
     {
-        Student FindBy(Guid Id);
+        Student FindBy(Guid id);
         Student FindBy(string name);
-        Student Create(Book book);
-        void Remove(Guid Id);
+        List<Student> FindAll();
+        Student Create(Student student);
+        void Remove(Guid id);
     }
 }

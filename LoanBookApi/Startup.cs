@@ -2,6 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LoanBook.Persistence;
+using LoanBook.Persistence.Api;
+using LoanBook.Services;
+using LoanBook.Services.Api;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -25,6 +29,15 @@ namespace LoanBookApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //services
+            services.AddSingleton<IBookService, BookService>();
+            services.AddSingleton<ILoanService, LoanService>();
+            services.AddSingleton<IStudentService, StudentService>();
+            //repositories
+            services.AddSingleton<IBookRepository, BookRepository>();
+            services.AddSingleton<ILoanRepository, LoanRepository>();
+            services.AddSingleton<IStudentRepository, StudentRepository>();
+
             services.AddControllers();
         }
 

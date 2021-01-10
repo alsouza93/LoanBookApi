@@ -19,5 +19,14 @@ namespace LoanBook.Domains
             DueDate = dueDate;
             ReturnDate = returnDate;
         }
+
+        public void ReturnBook()
+        {
+            if (ReturnDate != null)
+                throw new InvalidOperationException("Book already returned.");
+
+            ReturnDate = DateTime.Now;
+        }
+
     }
 }

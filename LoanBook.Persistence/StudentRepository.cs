@@ -2,27 +2,28 @@
 using LoanBook.Persistence.Api;
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace LoanBook.Persistence
 {
-    public class BookRepository : IBookRepository
+    public class StudentRepository : IStudentRepository
     {
-        public Book Create(Book book)
+        public Student Create(Student student)
+        {
+            return student;
+        }
+
+        public List<Student> FindaAll()
         {
             throw new NotImplementedException();
         }
 
-        public List<Book> Find()
+        public Student FindBy(Guid Id)
         {
             throw new NotImplementedException();
         }
 
-        public Book FindBy(Guid Id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Book FindBy(string name)
+        public Student FindBy(string name)
         {
             throw new NotImplementedException();
         }

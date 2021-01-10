@@ -1,5 +1,6 @@
 ﻿using LoanBook.Domains;
 using System;
+using System.Collections.Generic;
 
 namespace LoanBook.Persistence.Api
 {
@@ -7,7 +8,8 @@ namespace LoanBook.Persistence.Api
     {
         Student FindBy(Guid Id);
         Student FindBy(string name);
-        Student Create(Book book);
+        List<Student> FindaAll();
+        Student Create(Student student);
         void Remove(Guid Id);
     }
 }

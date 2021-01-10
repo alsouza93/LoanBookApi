@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using LoanBook.Api.Models;
+using LoanBook.Domains;
 using LoanBook.Services.Api;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LoanBook.Api.Controllers
@@ -18,27 +16,38 @@ namespace LoanBook.Api.Controllers
             this.studentService = studentService;
         }
 
-        [HttpGet("{id}")]
-        public string Get(int idAtor)
-        {
-            //studentService.
-            return "value";
-        }
-
         [HttpPost]
-        public void Post([FromBody] string valueTeste)
+        public IActionResult Post([FromBody] RequestStudentModel studentRequest)
         {
+            var student = new Student(
+                new Guid(),
+                studentRequest.Name,
+                studentRequest.DocumentNumber,
+                DateTime.Parse(studentRequest.DateOfBirth));
+
+            var result = studentService.Create(student);         
+            return Created($"students/{result.Id}", result);
         }
 
-        [HttpDelete("{id}")]
-        public void Delete(int idAtor)
+        [HttpDelete("/{idStudent}")]
+        public IActionResult Delete(string idStudent)
         {
+            studentService.Remove(new Guid(idStudent));
+            return NoContent();
         }
 
-        [HttpGet("{id}")]
-        public string Get(int idStudent)
+        [HttpGet("/{idStudent}")]
+        public IActionResult Get(string idStudent)
         {
-            return "value";
+            var result = studentService.FindBy(new Guid(idStudent));
+            return Ok(result);
+        }
+
+        [HttpGet()]
+        public IActionResult GetAll()
+        {
+            var result = studentService.FindAll();
+            return Ok(result);
         }
     }
 }

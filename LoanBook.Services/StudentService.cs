@@ -2,6 +2,7 @@
 using LoanBook.Persistence.Api;
 using LoanBook.Services.Api;
 using System;
+using System.Collections.Generic;
 
 namespace LoanBook.Services
 {
@@ -11,25 +12,31 @@ namespace LoanBook.Services
         public StudentService(IStudentRepository studentRepository)
         {
             this.studentRepository = studentRepository;
-        }
-        public Student Create(Book book)
+        }   
+
+        public Student Create(Student student)
         {
-            throw new NotImplementedException();
+            return studentRepository.Create(student);
         }
 
-        public Student FindBy(Guid Id)
+        public List<Student> FindAll()
         {
-            throw new NotImplementedException();
+            return studentRepository.FindaAll();
+        }
+
+        public Student FindBy(Guid id)
+        {
+            return studentRepository.FindBy(id);
         }
 
         public Student FindBy(string name)
         {
-            throw new NotImplementedException();
+            return studentRepository.FindBy(name);
         }
 
-        public void Remove(Guid Id)
+        public void Remove(Guid id)
         {
-            throw new NotImplementedException();
+            studentRepository.Remove(id);
         }
     }
 }

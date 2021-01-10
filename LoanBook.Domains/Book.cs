@@ -8,9 +8,8 @@ namespace LoanBook.Domains
         public string Name { get; private set; }
         public string Description { get; private set; }
         public string Isbn { get; private set; }
-        public int Quantity { get; private set; }
         public int AvailableQuantity { get; private set; }
-        public Book(Guid id, string name, string description, string isbn, int quantity)
+        public Book(Guid id, string name, string description, string isbn, int availableQuantity)
         {
             if (string.IsNullOrWhiteSpace(name))
             {
@@ -29,7 +28,20 @@ namespace LoanBook.Domains
             Name = name;
             Description = description;
             Isbn = isbn;
-            Quantity = quantity;
+            AvailableQuantity = availableQuantity;
+        }
+
+        public void LoanBook()
+        {
+            if (AvailableQuantity == 0)
+                throw new InvalidOperationException("Unavailable Book.");
+
+            AvailableQuantity--;
+        }
+
+        public void MakeBookAvalable()
+        {
+            AvailableQuantity++;
         }
     }
 }

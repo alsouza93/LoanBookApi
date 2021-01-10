@@ -1,43 +1,54 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+using LoanBook.Api.Models;
+using LoanBook.Domains;
+using LoanBook.Services.Api;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LoanBook.Api.Controllers
 {
-    [Route("api/Book")]
+    [Route("api/books")]
     [ApiController]
     public class BookController : ControllerBase
     {
-        public BookController()
+        private readonly IBookService bookService;
+        public BookController(IBookService bookService)
         {
-                
-        }
-        
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-       
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
+            this.bookService = bookService;
         }
 
-       
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpGet]
+        public IActionResult GetAll()
         {
+            var result = bookService.FindAll();
+            return Ok(result);
         }
-        
-        
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+
+        [HttpGet("/{idBook}")]
+        public IActionResult Get(string idBook)
         {
+            var result = bookService.FindBy(new Guid(idBook));
+            return Ok(result);
+        }
+
+
+        [HttpPost]
+        public IActionResult Post([FromBody] RequestBookModel requestBookModel)
+        {
+            var book = bookService.Create(new Book(new Guid(),
+                requestBookModel.Name,
+                requestBookModel.Description,
+                requestBookModel.Isbn,
+                requestBookModel.AvailableQuantity));
+
+            return Created($"/books/{book.Id}", book);
+        }
+
+
+        [HttpDelete("/{idBook}")]
+        public IActionResult Delete(string idBook)
+        {
+            bookService.Remove(new Guid(idBook));
+            return NoContent();
         }
     }
 }
