@@ -1,16 +1,18 @@
 ﻿using LoanBook.Domains;
+using LoanBook.Persistence.Api;
 using LoanBook.Services.Api;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace LoanBook.Services
 {
     public class LoanService : ILoanService
     {
-        public LoanService()
+        private const int returnDate = 7;
+        private readonly ILoanRepository loanRepository;
+        public LoanService(ILoanRepository loanRepository)
         {
-
+            this.loanRepository = loanRepository;
         }
 
         public Loan FindBy(Guid Id)
@@ -30,7 +32,14 @@ namespace LoanBook.Services
 
         public Loan LoanBook(Student student, Book book)
         {
-            throw new NotImplementedException();
+            if (book.AvailableQuantity == 0)
+            {
+                throw new InvalidOperationException("Book unavailable.");
+            }
+
+            var dueDate = DateTime.Now;
+            var loan = new Loan(new Guid(), book, student, dueDate, dueDate.AddDays(returnDate));
+            return loanRepository.Create(loan);          
         }
 
         public void Remove(Guid Id)

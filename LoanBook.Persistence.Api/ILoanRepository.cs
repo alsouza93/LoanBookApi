@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using LoanBook.Domains;
 
 namespace LoanBook.Persistence.Api
 {
     public interface ILoanRepository
     {
+        Loan Create(Loan loan);
     }
 }

@@ -39,7 +39,7 @@ namespace LoanBook.Domains
             AvailableQuantity--;
         }
 
-        public void MakeBookAvalable()
+        public void MakeBookAvailable()
         {
             AvailableQuantity++;
         }

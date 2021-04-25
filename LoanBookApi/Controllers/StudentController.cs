@@ -22,8 +22,10 @@ namespace LoanBook.Api.Controllers
             var student = new Student(
                 new Guid(),
                 studentRequest.Name,
-                studentRequest.DocumentNumber,
-                DateTime.Parse(studentRequest.DateOfBirth));
+                null,
+                DateTime.Parse(studentRequest.DateOfBirth),
+                null,                
+                null);
 
             var result = studentService.Create(student);         
             return Created($"students/{result.Id}", result);
